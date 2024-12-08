@@ -4,7 +4,7 @@ import { ROUTES } from '@/routes';
 import '@styles/main-sidebar.style.scss';
 import Link from 'next/link';
 
-const SideBarMain = () => {
+const SideBarMainPage = () => {
     return (
         <div className="sidebar-main">
             <div className="logo"></div>
@@ -34,4 +34,4 @@ const SideBarMain = () => {
     )
 }
 
-export default SideBarMain
+export default SideBarMainPage
