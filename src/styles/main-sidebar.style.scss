@@ -1,0 +1,17 @@
+.sidebar-main {
+    // background-color: red;
+    min-height: 100vh;
+    height: 100%;
+    width: 250px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    .logo {
+        background: url('https://res.cloudinary.com/dtl80dani/image/upload/v1733633335/2116-8-12-2024_mapll0.png') no-repeat center center;
+        background-size: contain;
+        height: 100px;
+    }
+
+    .content {
+        
+    }
+}
