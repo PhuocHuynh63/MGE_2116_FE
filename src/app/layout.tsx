@@ -1,5 +1,6 @@
 import SideBarMain from "@/containers/Sidebar";
 import "@/styles/layout.style.scss";
+import '@/app/globals.css';
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (

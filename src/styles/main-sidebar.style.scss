@@ -1,5 +1,5 @@
 .sidebar-main {
-    // background-color: red;
+    background-color: #F9F9F9;
     min-height: 100vh;
     height: 100%;
     width: 250px;
@@ -9,9 +9,33 @@
         background: url('https://res.cloudinary.com/dtl80dani/image/upload/v1733633335/2116-8-12-2024_mapll0.png') no-repeat center center;
         background-size: contain;
         height: 100px;
+        cursor: pointer;
     }
 
     .content {
-        
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        border-top: 1px solid #e0e0e0;
+
+        a {
+            display: block;
+            border-bottom: 1px solid #e0e0e0;
+            color: rgb(47, 47, 47);
+            padding: 25px 24px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+
+            &:hover {
+                color: rgb(56, 56, 56);
+                background-color: #e0e0e0b8;
+            }
+
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .bid_mge {}
     }
 }

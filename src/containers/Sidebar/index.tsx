@@ -1,34 +1,37 @@
 'use client';
 
 import { ROUTES } from '@/routes';
+import NavLink from '@/utils/hooks/NavLink';
 import '@styles/main-sidebar.style.scss';
 import Link from 'next/link';
 
 const SideBarMainPage = () => {
     return (
         <div className="sidebar-main">
-            <div className="logo"></div>
+            <Link href={ROUTES.BID_MGE}>
+                <div className="logo"></div>
+            </Link>
             <ul className="content">
-                <li className=''>
-                    <Link href={ROUTES.BID_MGE}>
+                <NavLink href={ROUTES.BID_MGE}>
+                    <li className='bid_mge'>
                         Bid MGE
-                    </Link>
-                </li>
-                <li className=''>
-                    <Link href={ROUTES.DATA_POINTS}>
+                    </li>
+                </NavLink>
+                <NavLink href={ROUTES.DATA_POINTS}>
+                    <li className='data_points'>
                         Data Points
-                    </Link>
-                </li>
-                <li className=''>
-                    <Link href={ROUTES.RESULTS_TOP}>
+                    </li>
+                </NavLink>
+                <NavLink href={ROUTES.RESULTS_TOP}>
+                    <li className='results_top'>
                         Results Top
-                    </Link>
-                </li>
-                <li className=''>
-                    <Link href={ROUTES.HISTORY}>
+                    </li>
+                </NavLink>
+                <NavLink href={ROUTES.HISTORY}>
+                    <li className='history'>
                         History
-                    </Link>
-                </li>
+                    </li>
+                </NavLink>
             </ul>
         </div>
     )
