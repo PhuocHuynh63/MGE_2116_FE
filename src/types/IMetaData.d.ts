@@ -1,4 +1,4 @@
-declare namespace IMODEL {
+declare namespace IMETADATA {
     export interface NAVLINK {
         href: string;
         children: React.ReactNode;

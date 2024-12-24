@@ -1,4 +1,5 @@
 import SideBarMain from "@/containers/Sidebar";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "@/styles/layout.style.scss";
 import '@/app/globals.css';
 
@@ -6,15 +7,13 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="en">
       <body>
-        <div className="layout-main container">
-          <div className="row flex">
-            <div className="sidebar col-4 col-md-4">
-              <SideBarMain />
-            </div>
+        <div className="layout-main ">
+          <div className="sidebar">
+            <SideBarMain />
+          </div>
 
-            <div className="main col-8 col-md-8">
-              {children}
-            </div>
+          <div className="main">
+            {children}
           </div>
         </div>
       </body>
