@@ -1,0 +1,174 @@
+.home-page {
+    .title {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-size: 35px;
+        font-weight: 600;
+        color: #000;
+        margin: 20px 0;
+    }
+
+    .notify {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .notify-success {
+            width: 93%;
+        }
+
+        .notify-error {
+            width: 93%;
+        }
+    }
+
+    .form {
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+
+            label {
+                font-size: 20px;
+                color: #000;
+                margin-bottom: 10px;
+                width: 93%;
+                text-align: left;
+            }
+
+            .contact {
+                color: #9a9a9a;
+            }
+
+            input {
+                width: 93%;
+                height: 50px;
+                padding: 0 20px;
+                font-size: 20px;
+                border: 1px solid #e1e1e1;
+                border-radius: 5px;
+                outline: none;
+
+                &:focus {
+                    border: 2px solid #313131;
+                }
+            }
+
+            .input-error {
+                border: 1px solid #F70500;
+            }
+
+            .text-error {
+                width: 93%;
+                color: #F70500;
+                font-size: 20px;
+                margin-top: 5px;
+            }
+        }
+
+        .submit {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 50px 0;
+
+            button {
+                padding: 0px 20px;
+                width: 93%;
+                height: 50px;
+                font-size: 20px;
+                font-weight: bold;
+                background-color: #23A744;
+                border: 1px solid #f5f5f5;
+                border-radius: 5px;
+                color: #ffffff;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    background-color: rgb(37, 185, 74);
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .header-home {
+        .top {
+            .left {
+                button {
+                    margin: 40px 40px;
+                    padding: 0px 17px;
+                    height: 60px;
+                    font-size: 20px;
+                    font-weight: bold;
+                    background-color: #23A744;
+                    border: 1px solid #f5f5f5;
+                    border-radius: 5px;
+                    color: #000;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        background-color: rgb(80, 200, 110);
+                        color: #fff;
+                    }
+
+                    .icon {
+                        width: 40px;
+                        height: 50px;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .right {
+                .command {
+                    width: auto;
+
+                    .logo-command {
+                        display: flex;
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                        height: 150px;
+                    }
+                }
+            }
+        }
+
+        .bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            margin: 0 45px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e1e1e1;
+
+            .text {
+                margin-bottom: 5px;
+                font-size: 20px;
+                color: #000;
+
+                .minimum-bid {
+                    font-size: 25px;
+                    font-weight: bold;
+                    color: #2cc051;
+                }
+            }
+        }
+
+        .type {
+            display: flex;
+            justify-content: center;
+
+            .typeMge {
+                font-size: 23px;
+                color: #efefef;
+                background-color: #F70500;
+                border-radius: 6px;
+                padding: 6px 22px 8px 22px;
+            }
+        }
+    }
+}

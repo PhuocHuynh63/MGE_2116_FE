@@ -7,7 +7,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="en">
       <body>
-        <div className="layout-main ">
+        <div className="layout-main">
           <div className="sidebar">
             <SideBarMain />
           </div>
