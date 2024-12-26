@@ -4,16 +4,18 @@ type CustomOptions = RequestInit & {
     baseUrl?: string | undefined;
 }
 
-class HttpError extends Error {
-    status: number;
-    payload: any;
+// class HttpError extends Error {
+//     status: number;
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     payload: any;
 
-    constructor({ status, payload }: { status: number; payload: any }) {
-        super('Http Error');
-        this.status = status;
-        this.payload = payload;
-    }
-}
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     constructor({ status, payload }: { status: number; payload: any }) {
+//         super('Http Error');
+//         this.status = status;
+//         this.payload = payload;
+//     }
+// }
 
 const request = async<Response>(method: 'GET' | 'POST' | 'PUT' | 'DELETE', url: string, options?: CustomOptions | undefined) => {
     const body = options?.body ? JSON.stringify(options.body) : undefined;
@@ -49,15 +51,19 @@ const request = async<Response>(method: 'GET' | 'POST' | 'PUT' | 'DELETE', url: 
 }
 
 const http = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     get<Response>(url: string, options?: Omit<CustomOptions, 'body'> | undefined) {
         return request<Response>('GET', url, options);
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     post<Response>(url: string, body: any, options?: Omit<CustomOptions, 'body'> | undefined) {
         return request<Response>('POST', url, { ...options, body });
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     put<Response>(url: string, body: any, options?: Omit<CustomOptions, 'body'> | undefined) {
         return request<Response>('PUT', url, { ...options, body });
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     delete<Response>(url: string, body: any, options?: Omit<CustomOptions, 'body'> | undefined) {
         return request<Response>('DELETE', url, { ...options, body });
     }

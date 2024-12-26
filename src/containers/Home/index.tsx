@@ -1,11 +1,12 @@
 'use client'
 
 import userService from "@/apiRequests/user";
-import HeaderHome from "@/components/HeaderHome/HeaderHome"
+import { Button } from "@/components/Button";
+import { Title } from "@/components/Title";
 import { IMGE, UserRequestSchema } from "@/shemaValidations/model.schema"
 import { yupResolver } from "@hookform/resolvers/yup";
 import '@styles/main-home.style.scss'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 interface IHomePage {
@@ -40,10 +41,9 @@ const HomePage = (props: IHomePage) => {
     });
 
     const onSubmit = async (data: IFormInput) => {
+        console.log("Form submitted!", data);
         setPointRequest(data.pointsRequest);
         const res = await userService.userRequest(data) as IUserRequestResponse;
-        console.log(res);
-        console.log(data);
 
         if (res.statusCode === 201) {
             setStatusBid('success');
@@ -56,30 +56,9 @@ const HomePage = (props: IHomePage) => {
     }
     //----------------------End----------------------//
 
-
-    /**
-     * Disabled button after click
-     */
-    const [disabled, setDisabled] = useState<boolean>(false);
-    useEffect(() => {
-        if (disabled) {
-            setTimeout(() => {
-                setDisabled(false);
-            }, 800);
-        }
-    }, [disabled]);
-
-    const handleDisabled = (e: React.MouseEvent) => {
-        e.preventDefault();
-        setDisabled(true);
-    };
-    //----------------------End----------------------//
-
     return (
         <div className="home-page">
-            <HeaderHome data={props?.data} />
-
-            <p className="title">TOTAL POINT MEMBER 2116</p>
+            <Title className="title">TOTAL POINT MEMBER 2116</Title>
 
             {
                 statusBid === 'error' ?
@@ -98,7 +77,7 @@ const HomePage = (props: IHomePage) => {
             }
 
             <div className="form">
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form>
                     <div className="form-group">
                         <label htmlFor="id">ID: </label>
                         <input type="text" className={`${errors.id ? 'input-error' : ''}`} {...register('id', { required: true })} placeholder="14521928" />
@@ -128,11 +107,11 @@ const HomePage = (props: IHomePage) => {
                     </div>
 
                     <div className="submit">
-                        <button type="submit" >Submit</button>
+                        <Button timeDelay={900} onClick={handleSubmit(onSubmit)} type="submit">Submit</Button>
                     </div>
                 </form>
             </div>
-        </div>
+        </div >
     )
 }
 

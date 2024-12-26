@@ -2,8 +2,13 @@ import SideBarMain from "@/containers/Sidebar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "@/styles/layout.style.scss";
 import '@/app/globals.css';
+import HeaderHome from "@/components/HeaderHome/HeaderHome";
+import mgeService from "@/apiRequests/mge";
+import { IMGE } from "@/shemaValidations/model.schema";
 
-export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
+const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {
+  const mgeResponse = await mgeService.getMge(1, 5) as IMGE;
+
   return (
     <html lang="en">
       <body>
@@ -13,6 +18,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
           </div>
 
           <div className="main">
+            <HeaderHome data={mgeResponse} />
             {children}
           </div>
         </div>
@@ -20,3 +26,5 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
     </html>
   );
 }
+
+export default RootLayout;

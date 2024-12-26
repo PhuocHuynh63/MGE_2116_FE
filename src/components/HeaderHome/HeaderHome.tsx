@@ -19,8 +19,8 @@ const HeaderHome = (props: IHeaderHomePage) => {
 
                 <div className="right container">
                     <div className="row justify-content-center">
-                        {props.data.data.results.map((item) => (
-                            <div key={item.id} className="command">
+                        {props.data.data.results.map((item, index) => (
+                            <div key={index} className="command">
                                 <img src={item.img} className="logo-command" alt={item.name} />
                             </div>
                         ))}
