@@ -5,10 +5,10 @@ import { Table, TableColumnsType, TableProps } from 'antd';
 
 interface DataType {
     key: React.Key;
-    name: string;
-    chinese: number;
-    math: number;
-    english: number;
+    no: number;
+    ingame: string;
+    id: number;
+    points: number;
 }
 
 
@@ -16,31 +16,27 @@ interface DataType {
 const DataPointsPage = () => {
     const columns: TableColumnsType<DataType> = [
         {
-            title: 'Name',
-            dataIndex: 'name',
+            title: 'NO',
+            dataIndex: 'no',
         },
         {
-            title: 'Chinese Score',
-            dataIndex: 'chinese',
+            title: 'Ingame',
+            dataIndex: 'ingame',
+        },
+        {
+            title: 'ID',
+            dataIndex: 'id',
             sorter: {
-                compare: (a, b) => a.chinese - b.chinese,
+                compare: (a, b) => a.id - b.id,
                 multiple: 3,
             },
         },
         {
-            title: 'Math Score',
-            dataIndex: 'math',
+            title: 'POINTS',
+            dataIndex: 'points',
             sorter: {
-                compare: (a, b) => a.math - b.math,
+                compare: (a, b) => a.points - b.points,
                 multiple: 2,
-            },
-        },
-        {
-            title: 'English Score',
-            dataIndex: 'english',
-            sorter: {
-                compare: (a, b) => a.english - b.english,
-                multiple: 1,
             },
         },
     ];
@@ -48,31 +44,31 @@ const DataPointsPage = () => {
     const data: DataType[] = [
         {
             key: '1',
-            name: 'John Brown',
-            chinese: 98,
-            math: 60,
-            english: 70,
+            no: 1,
+            ingame: 'John Brown',
+            id: 98,
+            points: 60,
         },
         {
             key: '2',
-            name: 'Jim Green',
-            chinese: 98,
-            math: 66,
-            english: 89,
+            no: 2,
+            ingame: 'Jim Green',
+            id: 98,
+            points: 66,
         },
         {
             key: '3',
-            name: 'Joe Black',
-            chinese: 98,
-            math: 90,
-            english: 70,
+            no: 3,
+            ingame: 'Joe Black',
+            id: 98,
+            points: 90,
         },
         {
             key: '4',
-            name: 'Jim Red',
-            chinese: 88,
-            math: 99,
-            english: 89,
+            no: 4,
+            ingame: 'Jim Red',
+            id: 88,
+            points: 99,
         },
     ];
 
@@ -80,10 +76,15 @@ const DataPointsPage = () => {
         console.log('params', pagination, filters, sorter, extra);
     };
 
+
     return (
-        <div className="data-points">
+        <div className="data-points container">
             <Title className="title">TOTAL POINT MEMBER 2116</Title>
-            <Table<DataType> columns={columns} dataSource={data} onChange={onChange} />
+
+            <div className="search d-flex justify-content-end">
+                <input type="text" className='search' />
+            </div>
+            <Table<DataType> columns={columns} dataSource={data} onChange={onChange}  bordered={true} />
         </div>
     )
 }
