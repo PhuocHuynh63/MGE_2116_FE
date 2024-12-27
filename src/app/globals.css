@@ -56,3 +56,11 @@ li {
   font-weight: 600;
   font-size: 19px;
 }
+
+.custom-table thead tr th {
+  font-size: 20px;
+}
+
+.custom-table tbody tr td {
+  font-size: 18px;
+}

@@ -78,13 +78,13 @@ const DataPointsPage = () => {
 
 
     return (
-        <div className="data-points container">
+        <div className="data-points" style={{ margin: '0 25px' }}>
             <Title className="title">TOTAL POINT MEMBER 2116</Title>
 
             <div className="search d-flex justify-content-end">
                 <input type="text" className='search' />
             </div>
-            <Table<DataType> columns={columns} dataSource={data} onChange={onChange}  bordered={true} />
+            <Table<DataType> className='custom-table' columns={columns} dataSource={data} onChange={onChange} bordered={true} />
         </div>
     )
 }

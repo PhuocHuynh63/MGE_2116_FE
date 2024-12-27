@@ -5,9 +5,9 @@ import { Button } from "@/components/Button";
 import { Title } from "@/components/Title";
 import { IMGE, UserRequestSchema } from "@/shemaValidations/model.schema"
 import { yupResolver } from "@hookform/resolvers/yup";
-import '@styles/main-home.style.scss'
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import '@styles/main-home.style.scss'
 
 interface IHomePage {
     data: IMGE;

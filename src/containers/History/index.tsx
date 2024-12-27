@@ -2,7 +2,9 @@
 
 const HistoryPage = () => {
     return (
-        <div>HistoryPage</div>
+        <div className="history-page container">
+
+        </div>
     )
 }
 

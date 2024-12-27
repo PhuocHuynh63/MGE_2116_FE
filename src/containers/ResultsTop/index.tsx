@@ -1,7 +1,7 @@
 'use client'
 
 import { Title } from '@/components/Title';
-import { Table, TableColumnsType, TableProps } from 'antd';
+import { Table, TableColumnsType } from 'antd';
 
 interface DataType {
     key: React.Key;
@@ -123,10 +123,10 @@ const ResultsTopPage = () => {
 
 
     return (
-        <div className="data-points container">
+        <div className="data-points" style={{ margin: '0 25px' }}>
             <Title className="title">LIST MEMBER BID SUCCES</Title>
 
-            <Table<DataType> columns={columns} dataSource={data} pagination={false} />
+            <Table<DataType> className='custom-table' columns={columns} dataSource={data} pagination={false} />
         </div>
     )
 }
