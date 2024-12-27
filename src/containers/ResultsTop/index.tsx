@@ -123,7 +123,7 @@ const ResultsTopPage = () => {
 
 
     return (
-        <div className="data-points" style={{ margin: '0 25px' }}>
+        <div className="data-points" style={{ margin: '0 25px 50px 25px' }}>
             <Title className="title">LIST MEMBER BID SUCCES</Title>
 
             <Table<DataType> className='custom-table' columns={columns} dataSource={data} pagination={false} />
