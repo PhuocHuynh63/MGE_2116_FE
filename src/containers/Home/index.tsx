@@ -58,7 +58,24 @@ const HomePage = (props: IHomePage) => {
 
     return (
         <div className="home-page">
-            <Title className="title">TOTAL POINT MEMBER 2116</Title>
+            <Title className="title">ENTER POINTS TO BID</Title>
+
+            <div className="count-time">
+                <h1 className='time'>
+                    <div className="day">
+                        <span className="number">4</span><span className="text">DAY</span>
+                    </div>
+                    <div className="hr">
+                        <span className="number">18</span><span className="text">HR</span>
+                    </div>
+                    <div className="min">
+                        <span className="number">31</span><span className="text">MIN</span>
+                    </div>
+                    <div className="sec">
+                        <span className="number">54</span><span className="text">SEC</span>
+                    </div>
+                </h1>
+            </div>
 
             {
                 statusBid === 'error' ?
@@ -79,26 +96,34 @@ const HomePage = (props: IHomePage) => {
             <div className="form">
                 <form>
                     <div className="form-group">
-                        <label htmlFor="id">ID: </label>
-                        <input type="text" className={`${errors.id ? 'input-error' : ''}`} {...register('id', { required: true })} placeholder="14521928" />
+                        <div className={`${errors.id ? 'input-error' : 'input'}`}>
+                            <label htmlFor="id">ID: </label>
+                            <input type="text" {...register('id', { required: true })} placeholder="14521928" />
+                        </div>
                         {errors.id && <span className={`${errors.id ? 'text-error' : ''}`}>{errors.id.message}</span>}
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="ingame">Ingame: </label>
-                        <input type="text" className={`${errors.ingame ? 'input-error' : ''}`} {...register('ingame', { required: true })} placeholder="乛 War win" />
+                        <div className={`${errors.ingame ? 'input-error' : 'input'}`}>
+                            <label htmlFor="ingame">Ingame: </label>
+                            <input type="text" {...register('ingame', { required: true })} placeholder="乛 War win" />
+                        </div>
                         {errors.ingame && <span className={`${errors.ingame ? 'text-error' : ''}`}>{errors.ingame.message}</span>}
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="pointRequest">Point Request: </label>
-                        <input type="text" className={`${errors.pointsRequest ? 'input-error' : ''}`} {...register('pointsRequest', { required: true })} placeholder="10000000" />
+                        <div className={`${errors.pointsRequest ? 'input-error' : 'input'}`}>
+                            <label htmlFor="pointRequest">Point Request: </label>
+                            <input type="text" {...register('pointsRequest', { required: true })} placeholder="10000000" />
+                        </div>
                         {errors.pointsRequest && <span className={`${errors.pointsRequest ? 'text-error' : ''}`}>{errors.pointsRequest.message}</span>}
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="secrectKey">Secrect Key <i className="contact">(Contact: GOL Phuoc): </i></label>
-                        <input type="text" className={`${errors.secrectKey ? 'input-error' : ''}`} {...register('secrectKey', { required: true })} />
+                        <div className={`${errors.secrectKey ? 'input-error' : 'input'}`}>
+                            <label htmlFor="secrectKey">Secrect Key <i className="contact">(Contact: GOL Phuoc): </i></label>
+                            <input type="text" {...register('secrectKey', { required: true })} placeholder="213d169b7i2o1pc7as3" />
+                        </div>
                         {errors.secrectKey && <span className={`${errors.secrectKey ? 'text-error' : ''}`}>{errors.secrectKey.message}</span>}
                     </div>
 

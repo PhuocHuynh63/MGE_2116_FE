@@ -9,7 +9,7 @@ interface IButton {
 
 const ButtonContainer = styled.button`
     padding: 0px 20px;
-    width: 93%;
+    width: 90%;
     height: 50px;
     font-size: 20px;
     font-weight: bold;
