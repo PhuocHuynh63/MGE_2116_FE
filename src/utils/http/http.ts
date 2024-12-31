@@ -25,7 +25,7 @@ const request = async<Response>(method: 'GET' | 'POST' | 'PUT' | 'DELETE', url: 
 
     //Nếu không truyền baseUrl (hoặc baseUrl = undefined) thì lấy từ envConfig.NEXT_PUBLIC_API_DEV_URL
     //Nếu truyền baseUrl thì lấy từ baseUrl
-    const baseUrl = options?.baseUrl === undefined ? envConfig.NEXT_PUBLIC_API_PROD_URL : options.baseUrl;
+    const baseUrl = options?.baseUrl === undefined ? envConfig.NEXT_PUBLIC_API_DEV_URL : options.baseUrl;
 
     const fullUrl = url.startsWith('/') ? `${baseUrl}${url}` : `${baseUrl}/${url}`;
 

@@ -34,7 +34,7 @@ const HeaderHome = (props: IHeaderHomePage) => {
             </div>
 
             <div className="type">
-                <span className='typeMge'>{props.data.data.results[0].typeMge}</span>
+                <span className='typeMge'>{props?.data?.data?.results[0]?.typeMge}</span>
             </div>
         </div>
     )
