@@ -2,15 +2,18 @@
 
 import { Title } from '@/components/Title';
 import { RESULTS_TOP } from '@/types/IPage';
-import { Table, TableColumnsType } from 'antd';
+import { Modal, Table, TableColumnsType } from 'antd';
 import { useTimeLeft } from '@/utils/hooks/TimeLeft';
+import { formatDate } from '@/utils/helpers/date';
+import { Button } from '@/components/Button';
+import { useState } from 'react';
 import '@styles/main/result-top.style.scss'
 
 interface DataType {
-    key: React.Key;
+    key: number;
     top: number;
     ingame: string;
-    id: number;
+    id: string;
     points: number;
     date: string
 }
@@ -18,6 +21,26 @@ interface DataType {
 
 
 const ResultsTopPage = (props: RESULTS_TOP.IResultsTopPage) => {
+    const [open, setOpen] = useState(false);
+    const [confirmLoading, setConfirmLoading] = useState(false);
+
+    const showModal = () => {
+        setOpen(true);
+    };
+
+    const handleOk = () => {
+        setConfirmLoading(true);
+        setTimeout(() => {
+            setOpen(false);
+            setConfirmLoading(false);
+        }, 2000);
+    };
+
+    const handleCancel = () => {
+        setOpen(false);
+    };
+
+
     const columns: TableColumnsType<DataType> = [
         {
             title: 'TOP',
@@ -41,94 +64,22 @@ const ResultsTopPage = (props: RESULTS_TOP.IResultsTopPage) => {
         }
     ];
 
-    const data: DataType[] = [
-        {
-            key: '1',
-            top: 1,
-            ingame: 'John Brown',
-            id: 98,
-            points: 60,
-            date: '2021-09-10 10:00:00'
-        },
-        {
-            key: '2',
-            top: 2,
-            ingame: 'Jim Green',
-            id: 98,
-            points: 66,
-            date: '2021-09-10 10:00:00'
-        },
-        {
-            key: '3',
-            top: 3,
-            ingame: 'Joe Black',
-            id: 98,
-            points: 90,
-            date: '2021-09-10 10:00:00'
-        },
-        {
-            key: '4',
-            top: 4,
-            ingame: 'Jim Red',
-            id: 98,
-            points: 60,
-            date: '2021-09-10 10:00:00'
-        },
-        {
-            key: '5',
-            top: 5,
-            ingame: 'Jim Brown',
-            id: 98,
-            points: 60,
-            date: '2021-09-10 10:00:00'
-        },
-        {
-            key: '6',
-            top: 6,
-            ingame: 'Jim Green',
-            id: 98,
-            points: 66,
-            date: '2021-09-10 10:00:00'
-        },
-        {
-            key: '7',
-            top: 7,
-            ingame: 'Joe Black',
-            id: 98,
-            points: 90,
-            date: '2021-09-10 10:00:00'
-        },
-        {
-            key: '8',
-            top: 8,
-            ingame: 'Jim Red',
-            id: 98,
-            points: 60,
-            date: '2021-09-10 10:00:00'
-        },
-        {
-            key: '9',
-            top: 9,
-            ingame: 'Jim Brown',
-            id: 98,
-            points: 60,
-            date: '2021-09-10 10:00:00'
-        },
-        {
-            key: '10',
-            top: 10,
-            ingame: 'Jim Green',
-            id: 98,
-            points: 66,
-            date: '2021-09-10 10:00:00'
-        },
-    ];
+    const data: DataType[] = props.timerCompleted?.data?.users?.map((item, index) => {
+        return {
+            key: index,
+            top: index + 1,
+            ingame: item.ingame,
+            id: item.id,
+            points: item.points,
+            date: formatDate(item.date)
+        }
+    }) || []
 
     const timerLeft = useTimeLeft(props.timer)
 
 
     return (
-        <div className="data-points" style={{ margin: '0 25px 50px 25px' }}>
+        <div className="results-top" style={{ margin: '0 25px 50px 25px' }}>
             <Title className="title">LIST MEMBER BID SUCCES</Title>
 
             {props.timer?.data?.statusCode === 200 ?
@@ -150,7 +101,19 @@ const ResultsTopPage = (props: RESULTS_TOP.IResultsTopPage) => {
                     </h2>
                 </div>
                 :
-                <Table<DataType> className='custom-table' columns={columns} dataSource={data} pagination={false} />
+                <>
+                    <Table<DataType> className='custom-table' columns={columns} dataSource={data} pagination={false} />
+                    <Button timeDelay={900} onClick={showModal}>King Confirm</Button>
+                    <Modal
+                        title="King Confirm"
+                        open={open}
+                        onOk={handleOk}
+                        confirmLoading={confirmLoading}
+                        onCancel={handleCancel}
+                    >
+                        <input type="text" className='input-king-confirm' />
+                    </Modal>
+                </>
             }
         </div>
     )

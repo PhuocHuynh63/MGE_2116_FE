@@ -15,13 +15,13 @@ import '@styles/main/home.style.scss';
 const HomePage = (props: HOME.IHomePage) => {
 
     const [pointRequest, setPointRequest] = useState<number>(0);
-    const [errorApi, setErrorApi] = useState<string>('');
+    const [message, setMessage] = useState<string>('');
     const [statusBid, setStatusBid] = useState<string>('');
 
     /**
      * useForm is a custom hook for managing form
      */
-    const { register, handleSubmit, formState: { errors } } = useForm<HOME.IFormInput>({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<HOME.IFormInput>({
         resolver: yupResolver(UserRequestSchema),
         mode: 'onChange',
         reValidateMode: 'onChange',
@@ -34,9 +34,11 @@ const HomePage = (props: HOME.IHomePage) => {
 
         if (res.statusCode === 201) {
             setStatusBid('success');
+            setMessage(res?.data.message);
+            reset();
         } else if (res.statusCode === 400) {
             setStatusBid('error');
-            setErrorApi(res.message);
+            setMessage(res?.message);
         } else {
             setStatusBid('');
         }
@@ -80,13 +82,13 @@ const HomePage = (props: HOME.IHomePage) => {
                 statusBid === 'error' ?
                     <div className="notify">
                         <div className="alert alert-danger notify-error" role="alert">
-                            MGE Bidding Failed. <strong> {errorApi}</strong>
+                            MGE Bidding Failed. <strong> {message}</strong>
                         </div>
                     </div>
                     : statusBid === 'success' ?
                         <div className="notify">
                             <div className="alert alert-success notify-success" role="alert">
-                                You have successfully bid with {pointRequest} points
+                                {message}
                             </div>
                         </div>
                         : null

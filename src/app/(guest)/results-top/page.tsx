@@ -1,10 +1,11 @@
 import timerService from '@/apiRequests/timer';
 import ResultsTopPage from '@/containers/ResultsTop'
-import { ITimerLeft } from '@/schemaValidations/model.schema';
+import { ITimerCompleted, ITimerLeftActive } from '@/schemaValidations/model.schema';
 import { HOME } from '@/types/IPage';
 
 const ResultsTop = async () => {
-    const timer = await timerService.getTimer() as ITimerLeft;
+    const timerActive = await timerService.getTimerActive('-user') as ITimerLeftActive;
+    const timerCompleted = await timerService.getTimerCompleted() as ITimerCompleted;
 
     /**
      *  Calculate time left
@@ -28,17 +29,18 @@ const ResultsTop = async () => {
                 hours: hours < 10 ? `0${hours}` : hours.toString(),
                 minutes: minutes < 10 ? `0${minutes}` : minutes.toString(),
                 seconds: seconds < 10 ? `0${seconds}` : seconds.toString(),
-                data: timer
+                data: timerActive
             };
         } else {
             return null;
         };
     }
-    const timeLeft = (calculateTimeLeft(timer?.data?.endTime ?? "") as HOME.ITimeLeft);
+    const timeLeft = (calculateTimeLeft(timerActive?.data?.endTime ?? "") as HOME.ITimeLeft);
 
     return (
         <ResultsTopPage
             timer={timeLeft}
+            timerCompleted={timerCompleted}
         />
     )
 }

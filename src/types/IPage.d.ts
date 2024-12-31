@@ -1,4 +1,4 @@
-import { IMGE, ITimerLeft } from "@/schemaValidations/model.schema";
+import { IMGE, ITimerCompleted, ITimerLeft } from "@/schemaValidations/model.schema";
 
 declare namespace HOME {
     interface IHomePage {
@@ -11,7 +11,7 @@ declare namespace HOME {
         hours: string;
         minutes: string;
         seconds: string;
-        data?: ITimerLeft;
+        data?: ITimerLeftActive;
     }
 
     interface IFormInput {
@@ -25,12 +25,14 @@ declare namespace HOME {
     interface IUserRequestResponse {
         message: string;
         statusCode: number;
+        data?: any;
     }
 }
 
 declare namespace RESULTS_TOP {
     interface IResultsTopPage {
         timer: HOME.ITimeLeft;
+        timerCompleted: ITimerCompleted;
     }
 
     interface DataType {

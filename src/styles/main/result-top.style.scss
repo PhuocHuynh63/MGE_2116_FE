@@ -1,4 +1,4 @@
-.data-points {
+.results-top {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,8 +40,10 @@
     }
 
     .custom-table {
-        width: 98%;
+        width: 90%;
+        margin-bottom: 30px;
     }
+
 
     @media screen and (max-width: 1025px) {
         .count-time {
@@ -110,4 +112,14 @@
             }
         }
     }
+}
+
+.input-king-confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0 10px;
+    height: 40px;
+    width: 100%;
 }

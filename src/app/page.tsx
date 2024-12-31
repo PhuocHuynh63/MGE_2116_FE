@@ -1,12 +1,12 @@
 import mgeService from "@/apiRequests/mge";
 import timerService from "@/apiRequests/timer";
 import HomePage from "@/containers/Home";
-import { IMGE, ITimerLeft } from "@/schemaValidations/model.schema";
+import { IMGE, ITimerLeftActive } from "@/schemaValidations/model.schema";
 import { HOME } from "@/types/IPage";
 
 const Home = async () => {
   const mgeResponse = await mgeService.getMge(1, 5) as IMGE;
-  const timer = await timerService.getTimer() as ITimerLeft;
+  const timer = await timerService.getTimerActive('-user') as ITimerLeftActive;
 
   /**
    *  Calculate time left

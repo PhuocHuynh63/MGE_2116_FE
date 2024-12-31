@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { date, z } from "zod";
 import * as yup from "yup"
 
 export const BackendResponseSchema = <T extends z.ZodTypeAny>(dataSchema: T) =>
@@ -58,9 +58,9 @@ export type IUser = yup.InferType<typeof UserRequestSchema>
 
 
 /**
- * TimerSchema is a schema for Timer data
+ * TimerSchema is a schema for Timer, status active
  */
-const TimerSchema = z.object({
+const TimerActiveSchema = z.object({
     _id: z.string(),
     startTime: z.string(),
     endTime: z.string(),
@@ -69,6 +69,29 @@ const TimerSchema = z.object({
     status: z.string(),
 })
 
-export const TimerResponseSchema = BackendResponseSchema(TimerSchema);
-export type ITimerLeft = z.TypeOf<typeof TimerResponseSchema>
+export const TimerResponseSchema = BackendResponseSchema(TimerActiveSchema);
+export type ITimerLeftActive = z.TypeOf<typeof TimerResponseSchema>
+//----------------------End----------------------//
+
+
+/**
+ * TimerSchema is a schema for Timer, status completed
+ */
+const TimerCompletedSchema = z.object({
+    _id: z.string(),
+    startTime: z.string(),
+    endTime: z.string(),
+    typeMge: z.string(),
+    pointsLimit: z.number(),
+    status: z.string(),
+    users: z.array(z.object({
+        id: z.string(),
+        ingame: z.string(),
+        points: z.number(),
+        date: z.string(),
+    }))
+})
+
+export const TimerCompletedResponseSchema = BackendResponseSchema(TimerCompletedSchema);
+export type ITimerCompleted = z.TypeOf<typeof TimerCompletedResponseSchema>
 //----------------------End----------------------//

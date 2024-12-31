@@ -5,6 +5,7 @@ interface IButton {
     timeDelay: number;
     type?: "button" | "submit" | "reset";
     onClick: () => void;
+    style?: React.CSSProperties;
 }
 
 const ButtonContainer = styled.button`
