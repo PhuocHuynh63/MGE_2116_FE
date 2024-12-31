@@ -1,6 +1,6 @@
 'use client';
 
-import { IMGE } from '@/shemaValidations/model.schema'
+import { IMGE } from '@/schemaValidations/model.schema'
 import { FiAlignJustify } from 'react-icons/fi'
 
 interface IHeaderHomePage {

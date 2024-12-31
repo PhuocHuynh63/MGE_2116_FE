@@ -1,7 +1,7 @@
 import SideBarMain from "@/containers/Sidebar";
 import HeaderHome from "@/components/HeaderHome/HeaderHome";
 import mgeService from "@/apiRequests/mge";
-import { IMGE } from "@/shemaValidations/model.schema";
+import { IMGE } from "@/schemaValidations/model.schema";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "@/styles/layout.style.scss";
 import '@/app/globals.css';

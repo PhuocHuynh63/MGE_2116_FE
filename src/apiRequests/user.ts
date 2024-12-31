@@ -1,4 +1,4 @@
-import { IUser } from "@/shemaValidations/model.schema";
+import { IUser } from "@/schemaValidations/model.schema";
 import http from "@/utils/http/http";
 
 const userService = {

@@ -3,14 +3,13 @@
 import userService from "@/apiRequests/user";
 import { Button } from "@/components/Button";
 import { Title } from "@/components/Title";
-import { UserRequestSchema } from "@/shemaValidations/model.schema"
+import { UserRequestSchema } from "@/schemaValidations/model.schema"
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import '@styles/main-home.style.scss';
-import timerService from "@/apiRequests/timer";
 import { HOME } from "@/types/IPage";
 import { useTimeLeft } from "@/utils/hooks/TimeLeft";
+import '@styles/main/home.style.scss';
 
 
 const HomePage = (props: HOME.IHomePage) => {

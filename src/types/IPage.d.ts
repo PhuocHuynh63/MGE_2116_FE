@@ -1,4 +1,4 @@
-import { IMGE, ITimerLeft } from "@/shemaValidations/model.schema";
+import { IMGE, ITimerLeft } from "@/schemaValidations/model.schema";
 
 declare namespace HOME {
     interface IHomePage {
@@ -25,5 +25,20 @@ declare namespace HOME {
     interface IUserRequestResponse {
         message: string;
         statusCode: number;
+    }
+}
+
+declare namespace RESULTS_TOP {
+    interface IResultsTopPage {
+        timer: HOME.ITimeLeft;
+    }
+
+    interface DataType {
+        key: React.Key;
+        top: number;
+        ingame: string;
+        id: number;
+        points: number;
+        date: string
     }
 }

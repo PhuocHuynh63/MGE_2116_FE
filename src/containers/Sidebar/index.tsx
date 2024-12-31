@@ -2,8 +2,8 @@
 
 import { ROUTES } from '@/routes';
 import NavLink from '@/utils/hooks/NavLink';
-import '@styles/main-sidebar.style.scss';
 import Link from 'next/link';
+import '@styles/main/sidebar.style.scss';
 
 const SideBarMainPage = () => {
     return (

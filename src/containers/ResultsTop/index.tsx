@@ -1,7 +1,10 @@
 'use client'
 
 import { Title } from '@/components/Title';
+import { RESULTS_TOP } from '@/types/IPage';
 import { Table, TableColumnsType } from 'antd';
+import { useTimeLeft } from '@/utils/hooks/TimeLeft';
+import '@styles/main/result-top.style.scss'
 
 interface DataType {
     key: React.Key;
@@ -14,7 +17,7 @@ interface DataType {
 
 
 
-const ResultsTopPage = () => {
+const ResultsTopPage = (props: RESULTS_TOP.IResultsTopPage) => {
     const columns: TableColumnsType<DataType> = [
         {
             title: 'TOP',
@@ -121,12 +124,34 @@ const ResultsTopPage = () => {
         },
     ];
 
+    const timerLeft = useTimeLeft(props.timer)
+
 
     return (
         <div className="data-points" style={{ margin: '0 25px 50px 25px' }}>
             <Title className="title">LIST MEMBER BID SUCCES</Title>
 
-            <Table<DataType> className='custom-table' columns={columns} dataSource={data} pagination={false} />
+            {props.timer?.data?.statusCode === 200 ?
+                <div className="count-time">
+                    <h1 className='coming-soon'>COMING SOON</h1>
+                    <h2 className='time'>
+                        <div className="day">
+                            <span className="number">{timerLeft?.days}</span><span className="text">DAY</span>
+                        </div>
+                        <div className="hr">
+                            <span className="number">{timerLeft?.hours}</span><span className="text">HR</span>
+                        </div>
+                        <div className="min">
+                            <span className="number">{timerLeft?.minutes}</span><span className="text">MIN</span>
+                        </div>
+                        <div className="sec">
+                            <span className="number">{timerLeft?.seconds}</span><span className="text">SEC</span>
+                        </div>
+                    </h2>
+                </div>
+                :
+                <Table<DataType> className='custom-table' columns={columns} dataSource={data} pagination={false} />
+            }
         </div>
     )
 }

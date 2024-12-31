@@ -1,7 +1,7 @@
 import mgeService from "@/apiRequests/mge";
 import timerService from "@/apiRequests/timer";
 import HomePage from "@/containers/Home";
-import { IMGE, ITimerLeft } from "@/shemaValidations/model.schema";
+import { IMGE, ITimerLeft } from "@/schemaValidations/model.schema";
 import { HOME } from "@/types/IPage";
 
 const Home = async () => {

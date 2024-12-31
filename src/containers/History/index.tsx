@@ -1,6 +1,6 @@
 'use client'
 
-import '@styles/main-history.style.scss'
+import '@styles/main/history.style.scss'
 
 const HistoryPage = () => {
     return (
