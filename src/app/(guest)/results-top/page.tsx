@@ -5,7 +5,7 @@ import { HOME } from '@/types/IPage';
 
 const ResultsTop = async () => {
     const timerActive = await timerService.getTimerActive('-user') as ITimerLeftActive;
-    const timerCompleted = await timerService.getTimerCompleted() as ITimerCompleted;
+    const timerCompleted = await timerService.getTimerPending('desc') as ITimerCompleted;
 
     /**
      *  Calculate time left

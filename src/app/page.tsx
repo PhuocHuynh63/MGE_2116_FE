@@ -33,7 +33,7 @@ const Home = async () => {
         data: timer
       };
     } else {
-      return null;
+      timerService.updateStatusTimerToPending();
     };
   }
   const timeLeft = (calculateTimeLeft(timer?.data?.endTime ?? "") as HOME.ITimeLeft);

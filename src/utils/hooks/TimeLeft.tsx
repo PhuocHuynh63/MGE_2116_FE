@@ -15,7 +15,7 @@ export const useTimeLeft = (initialTime: any) => {
 
                 if (totalSeconds <= 1) {
                     clearInterval(interval);
-                    timerService.updateStatusTimer();
+                    timerService.updateStatusTimerToPending();
                     return { days: "00", hours: "00", minutes: "00", seconds: "00" };
                 }
 

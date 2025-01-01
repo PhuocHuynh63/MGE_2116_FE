@@ -4,14 +4,14 @@ const timerService = {
     getTimerActive: (selectedFields: string) => {
         return http.get(`timer/timer-active?selectedFields=${selectedFields}`);
     },
-    getTimerCompleted: () => {
-        return http.get('timer/timer-complete-desc');
+    getTimerPending: (sort: string) => {
+        return http.get(`timer/timer-pending?sort=${sort}`);
     },
     setTimer: (data: any) => {
         return http.post('timer/set-timer', data);
     },
-    updateStatusTimer: () => {
-        return http.put('timer/update/status-timer', {});
+    updateStatusTimerToPending: () => {
+        return http.put('timer/update/status-timer-pending', {});
     }
 }
 
