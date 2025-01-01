@@ -50,10 +50,31 @@ export const UserRequestSchema = yup.object({
         .required('Point is required')
         .moreThan(9999999, 'Point must be greater than 10,000,000'),
     secretKey: yup.string().required('Secret key is required'),
-    typeMge: yup.string().required(),
+    email: yup.string().email('Invalid email').optional(),
 }).required()
 
-export type IUser = yup.InferType<typeof UserRequestSchema>
+export type IUserRequest = yup.InferType<typeof UserRequestSchema>
+//----------------------End----------------------//
+
+
+/**
+ * UserSchema is a schema for User response
+ */
+export const UserSchema = z.object({
+    meta: z.object({
+        current: z.number(),
+        pageSize: z.number(),
+        totalPage: z.number(),
+        totalItem: z.number(),
+    }),
+    results: z.array(z.object({
+        id: z.string(),
+        ingame: z.string(),
+        points: z.number(),
+    })),
+})
+export const UserResponseSchema = BackendResponseSchema(UserSchema);
+export type IUser = z.TypeOf<typeof UserResponseSchema>
 //----------------------End----------------------//
 
 

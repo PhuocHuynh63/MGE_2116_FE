@@ -1,4 +1,4 @@
-import { IHistory, IMGE, ITimerCompleted, ITimerLeft } from "@/schemaValidations/model.schema";
+import { IHistory, IMGE, ITimerCompleted, ITimerLeft, IUser } from "@/schemaValidations/model.schema";
 
 declare namespace HOME {
     interface IHomePage {
@@ -19,7 +19,7 @@ declare namespace HOME {
         ingame: string;
         pointsRequest: number;
         secretKey: string;
-        typeMge: string;
+        email?: string;
     }
 
     interface IUserRequestResponse {
@@ -48,5 +48,19 @@ declare namespace RESULTS_TOP {
 declare namespace HISTORY {
     interface IHistoryPage {
         data: IHistory;
+    }
+}
+
+declare namespace DATA_POINTS {
+    interface IDataType {
+        key: number;
+        no: number;
+        ingame: string;
+        id: string;
+        points: number;
+    }
+
+    interface IDataPointsPage {
+        data: IUser;
     }
 }
