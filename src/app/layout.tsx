@@ -5,6 +5,8 @@ import { IMGE } from "@/schemaValidations/model.schema";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "@/styles/layout.style.scss";
 import '@/app/globals.css';
+import StyledComponentsRegistry from "@/lib/registry";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {
   const mgeResponse = await mgeService.getMge(1, 5) as IMGE;
@@ -19,7 +21,13 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children })
 
           <div className="main">
             <HeaderHome data={mgeResponse} />
-            {children}
+
+
+            <StyledComponentsRegistry>
+              <AntdRegistry>
+                {children}
+              </AntdRegistry>
+            </StyledComponentsRegistry>
           </div>
         </div>
       </body>

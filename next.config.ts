@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true, // Bỏ qua lỗi ESLint khi build
   },
   output: "standalone",
+  compiler: {
+    styledComponents: true,
+  },
 };
 
 export default nextConfig;
