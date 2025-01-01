@@ -14,7 +14,6 @@ import '@styles/main/home.style.scss';
 
 const HomePage = (props: HOME.IHomePage) => {
 
-    const [pointRequest, setPointRequest] = useState<number>(0);
     const [message, setMessage] = useState<string>('');
     const [statusBid, setStatusBid] = useState<string>('');
 
@@ -29,7 +28,6 @@ const HomePage = (props: HOME.IHomePage) => {
 
     const onSubmit = async (data: HOME.IFormInput) => {
         console.log("Form submitted!", data);
-        setPointRequest(data.pointsRequest);
         const res = await userService.userRequest(data) as HOME.IUserRequestResponse;
 
         if (res.statusCode === 201) {
@@ -122,14 +120,10 @@ const HomePage = (props: HOME.IHomePage) => {
 
                 <div className="form-group">
                     <div className={`${errors.secretKey ? 'input-error' : 'input'}`}>
-                        <label htmlFor="secretKey">Secrect Key <i className="contact">(Contact: GOL Phuoc): </i></label>
+                        <label htmlFor="secretKey">Secret Key <i className="contact">(Contact: GOL Phuoc): </i></label>
                         <input type="text" {...register('secretKey', { required: true })} placeholder="213d169b7i2o1pc7as3" />
                     </div>
                     {errors.secretKey && <span className={`${errors.secretKey ? 'text-error' : ''}`}>{errors.secretKey.message}</span>}
-                </div>
-
-                <div className="form-group">
-                    <input type="hidden" value={props?.mgeData?.data?.results[0]?.typeMge} {...register('typeMge', { required: true })} />
                 </div>
 
                 <div className="submit">

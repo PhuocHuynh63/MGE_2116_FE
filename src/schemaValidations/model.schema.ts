@@ -3,8 +3,8 @@ import * as yup from "yup"
 
 export const BackendResponseSchema = <T extends z.ZodTypeAny>(dataSchema: T) =>
     z.object({
-        statusCode: z.number(),
-        message: z.string(),
+        statusCode: z.number().optional(),
+        message: z.string().optional(),
         error: z.string().optional(),
         data: dataSchema.optional(),
     }).refine(
@@ -95,3 +95,18 @@ const TimerCompletedSchema = z.object({
 export const TimerCompletedResponseSchema = BackendResponseSchema(TimerCompletedSchema);
 export type ITimerCompleted = z.TypeOf<typeof TimerCompletedResponseSchema>
 //----------------------End----------------------//
+
+
+/**
+ * HistorySchema is a schema for History
+ */
+const HistorySchema = z.object({
+    id: z.string(),
+    ingame: z.string(),
+    points: z.number(),
+    description: z.string(),
+    createdAt: date(),
+})
+
+export const HistoryResponseSchema = BackendResponseSchema(HistorySchema);
+export type IHistory = z.TypeOf<typeof HistoryResponseSchema>

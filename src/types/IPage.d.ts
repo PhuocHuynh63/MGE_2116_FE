@@ -1,4 +1,4 @@
-import { IMGE, ITimerCompleted, ITimerLeft } from "@/schemaValidations/model.schema";
+import { IHistory, IMGE, ITimerCompleted, ITimerLeft } from "@/schemaValidations/model.schema";
 
 declare namespace HOME {
     interface IHomePage {
@@ -39,8 +39,14 @@ declare namespace RESULTS_TOP {
         key: React.Key;
         top: number;
         ingame: string;
-        id: number;
+        id: string;
         points: number;
         date: string
+    }
+}
+
+declare namespace HISTORY {
+    interface IHistoryPage {
+        data: IHistory;
     }
 }
