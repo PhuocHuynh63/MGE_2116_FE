@@ -4,8 +4,23 @@ import { ITimerCompleted, ITimerLeftActive } from '@/schemaValidations/model.sch
 import { HOME } from '@/types/IPage';
 
 const ResultsTop = async () => {
-    const timerActive = await timerService.getTimerActive('-user') as ITimerLeftActive;
-    const timerCompleted = await timerService.getTimerPending('desc') as ITimerCompleted;
+    let timerActive = null;
+    let timerCompleted = null;
+
+    try {
+        timerActive = await timerService.getTimerActive('-users') as ITimerLeftActive;
+        timerCompleted = await timerService.getTimerPending('desc') as ITimerCompleted;
+    } catch (error) {
+        console.error("Error fetching data", error);
+    }
+
+    // Nếu không có dữ liệu, trả về giá trị mặc định
+    if (!timerActive || (timerActive.statusCode !== 200 && timerActive.statusCode !== 201)) {
+        timerActive = { data: undefined };
+    }
+    if (!timerCompleted || (timerCompleted.statusCode !== 200 && timerCompleted.statusCode !== 201)) {
+        timerCompleted = { data: undefined };
+    }
 
     /**
      *  Calculate time left
@@ -35,7 +50,7 @@ const ResultsTop = async () => {
             return null;
         };
     }
-    const timeLeft = (calculateTimeLeft(timerActive?.data?.endTime ?? "") as HOME.ITimeLeft);
+    const timeLeft = (calculateTimeLeft(timerActive?.data?.endTime ?? "")) as HOME.ITimeLeft;
 
     return (
         <ResultsTopPage

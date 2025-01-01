@@ -64,25 +64,25 @@ const ResultsTopPage = (props: RESULTS_TOP.IResultsTopPage) => {
         }
     ];
 
-    const data: DataType[] = props.timerCompleted?.data?.users?.map((item, index) => {
+    const data: DataType[] = props?.timerCompleted?.data?.users?.map((item, index) => {
         return {
             key: index,
             top: index + 1,
             ingame: item.ingame,
             id: item.id,
             points: item.points,
-            date: formatDate(item.date)
+            date: formatDate(item?.date)
         }
     }) || []
 
-    const timerLeft = useTimeLeft(props.timer)
+    const timerLeft = useTimeLeft(props?.timer)
 
 
     return (
         <div className="results-top" style={{ margin: '0 25px 50px 25px' }}>
             <Title className="title">LIST MEMBER BID SUCCES</Title>
 
-            {props.timer?.data?.statusCode === 200 ?
+            {props?.timer?.data?.statusCode === 200 ?
                 <div className="count-time">
                     <h1 className='coming-soon'>COMING SOON</h1>
                     <h2 className='time'>

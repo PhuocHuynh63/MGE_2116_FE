@@ -6,7 +6,19 @@ import { HOME } from "@/types/IPage";
 
 const Home = async () => {
   const mgeResponse = await mgeService.getMge(1, 5) as IMGE;
-  const timer = await timerService.getTimerActive('-user') as ITimerLeftActive;
+  let timer = null;
+
+  try {
+    timer = await timerService.getTimerActive('-user') as ITimerLeftActive;
+
+  } catch (error) {
+    console.error("Error fetching data", error);
+  }
+
+  if (!timer || (timer.statusCode !== 200 && timer.statusCode !== 201)) {
+    timer = { data: undefined };
+  }
+
 
   /**
    *  Calculate time left
