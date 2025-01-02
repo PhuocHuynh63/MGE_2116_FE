@@ -6,6 +6,7 @@ import { Table, TableColumnsType, TableProps } from 'antd';
 import { useEffect, useState } from 'react';
 import userService from '@/apiRequests/user';
 import { IUser } from '@/schemaValidations/model.schema';
+import '@styles/main/data-points.scss';
 
 const DataPointsPage = (props: DATA_POINTS.IDataPointsPage) => {
     const columns: TableColumnsType<DATA_POINTS.IDataType> = [
@@ -123,7 +124,7 @@ const DataPointsPage = (props: DATA_POINTS.IDataPointsPage) => {
             <Title className="title">TOTAL POINT MEMBER 2116</Title>
 
             <div className="search d-flex justify-content-end">
-                <input type="text" className="search" placeholder="Search..." onChange={handleSearch} />
+                <input type="text" className="search-input1" placeholder="Search..." onChange={handleSearch} />
             </div>
             <Table<DATA_POINTS.IDataType>
                 className="custom-table"
