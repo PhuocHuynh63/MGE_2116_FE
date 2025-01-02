@@ -7,6 +7,9 @@ const userService = {
     },
     getAllUser: async (current: number, pageSize: number) => {
         return await http.get(`user?current=${current}&pageSize=${pageSize}`);
+    },
+    searchByNameOrId: async (term: string, current: number, pageSize: number) => {
+        return await http.get(`user/search?term=${term}&current=${current}&pageSize=${pageSize}`);
     }
 }
 
