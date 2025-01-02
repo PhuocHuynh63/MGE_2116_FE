@@ -57,7 +57,7 @@ declare namespace DATA_POINTS {
         no: number;
         ingame: string;
         id: string;
-        points: number;
+        points: any;
     }
 
     interface IDataPointsPage {
