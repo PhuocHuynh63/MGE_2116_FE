@@ -1,4 +1,4 @@
-import historyService from '@/apiRequests/result';
+import historyService from '@/apiRequests/history';
 import HistoryPage from '@/containers/History'
 import { IHistory } from '@/schemaValidations/model.schema';
 import React from 'react'

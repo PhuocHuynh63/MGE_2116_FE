@@ -7,12 +7,8 @@ const ResultsTop = async () => {
     let timerActive = null;
     let timerCompleted = null;
 
-    try {
-        timerActive = await timerService.getTimerActive('-users') as ITimerLeftActive;
-        timerCompleted = await timerService.getTimerPending('desc') as ITimerCompleted;
-    } catch (error) {
-        console.error("Error fetching data", error);
-    }
+    timerActive = await timerService.getTimerActive('-users') as ITimerLeftActive;
+    timerCompleted = await timerService.getTimerPending('desc') as ITimerCompleted;
 
     // Nếu không có dữ liệu, trả về giá trị mặc định
     if (!timerActive || (timerActive.statusCode !== 200 && timerActive.statusCode !== 201)) {
