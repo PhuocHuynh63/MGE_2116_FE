@@ -1,5 +1,6 @@
 'use client';
 
+import { useMenu } from '@/lib/menu.provider';
 import { IMGE } from '@/schemaValidations/model.schema'
 import { FiAlignJustify } from 'react-icons/fi'
 
@@ -8,11 +9,14 @@ interface IHeaderHomePage {
 }
 
 const HeaderHome = (props: IHeaderHomePage) => {
+    const menuContext = useMenu();
+    const toggleMenu = menuContext?.toggleMenu;
+
     return (
         <div className="header-home">
             <div className="top d-flex">
                 <div className="left">
-                    <button title="Menu">
+                    <button title="Menu" onClick={toggleMenu} className="btn-menu">
                         <FiAlignJustify className="icon" />
                     </button>
                 </div>

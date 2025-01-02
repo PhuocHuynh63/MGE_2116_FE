@@ -7,6 +7,7 @@ import "@/styles/layout.style.scss";
 import '@/app/globals.css';
 import StyledComponentsRegistry from "@/lib/registry";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { MenuProvider } from "@/lib/menu.provider";
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {
   const mgeResponse = await mgeService.getMge(1, 5) as IMGE;
@@ -14,22 +15,24 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children })
   return (
     <html lang="en">
       <body>
-        <div className="layout-main">
-          <div className="sidebar">
-            <SideBarMain />
+        <MenuProvider>
+          <div className="layout-main">
+            <div className="sidebar">
+              <SideBarMain />
+            </div>
+
+            <div className="main">
+              <HeaderHome data={mgeResponse} />
+
+
+              <StyledComponentsRegistry>
+                <AntdRegistry>
+                  {children}
+                </AntdRegistry>
+              </StyledComponentsRegistry>
+            </div>
           </div>
-
-          <div className="main">
-            <HeaderHome data={mgeResponse} />
-
-
-            <StyledComponentsRegistry>
-              <AntdRegistry>
-                {children}
-              </AntdRegistry>
-            </StyledComponentsRegistry>
-          </div>
-        </div>
+        </MenuProvider>
       </body>
     </html>
   );
